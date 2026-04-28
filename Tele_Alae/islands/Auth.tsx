@@ -6,13 +6,16 @@ export default function Auth() {
   return (
     <div class="min-h-screen bg-[#211C84] flex flex-col items-center justify-center">
 
-      {/* 🔹 TÍTULO AFUERA */}
-      <div class="bg-[#7473d1] border border-white/30 rounded-3xl p-2 mb-1" >
+      {/*TÍTULO */}
+      <img 
+      src="/Logo_a_color.png" 
+      class="absolute top-6 left-6 w-44 h-44 object-contain"
+      />
       <h1 class="text-7xl text-white font-bold mb-2">
         Tele Alae
       </h1>
-      </div>
-      <div class="bg-[#7473d1] border border-white/30 rounded-3xl p-0.5 mb-12" >
+      
+      <div class="p-0.5 mb-12" >
       <p class="text-white/70 mb-2">
         Sistema de Telemedicina Chiloe
       </p>
@@ -65,7 +68,7 @@ export default function Auth() {
               />
             </div>
 
-            <button class="mt-4 bg-[#4D55CC] hover:bg-indigo-800 text-white py-3 rounded-full">
+            <button class="mt-4 bg-indigo-800 hover:bg-[#4D55CC] text-white py-3 rounded-full w-40 mx-auto">
               Iniciar sesión
             </button>
           </form>
@@ -122,7 +125,7 @@ export default function Auth() {
               />
             </div>
 
-            <button class="mt-4 bg-[#4D55CC] hover:bg-indigo-800 text-white py-3 rounded-full">
+            <button class="mt-4 bg-indigo-800 hover:bg-[#B5A8D5] text-white py-3 rounded-full w-40 mx-auto">
               Crear cuenta
             </button>
 
