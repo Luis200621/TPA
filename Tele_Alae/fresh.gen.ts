@@ -2,17 +2,27 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $_app from "./routes/_app.tsx";
+import * as $Consulta from "./routes/Consulta.tsx";
+import * as $Historial_medico from "./routes/Historial_medico.tsx";
+import * as $Medico from "./routes/Medico.tsx";
+import * as $Paciente from "./routes/Paciente.tsx";
+import * as $Recetas from "./routes/Recetas.tsx";
 import * as $api_Crear_otp from "./routes/api/Crear_otp.ts";
 import * as $index from "./routes/index.tsx";
+import * as $lista_espera from "./routes/lista_espera.tsx";
 import * as $Auth from "./islands/Auth.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/_app.tsx": $_app,
+    "./routes/Consulta.tsx": $Consulta,
+    "./routes/Historial_medico.tsx": $Historial_medico,
+    "./routes/Medico.tsx": $Medico,
+    "./routes/Paciente.tsx": $Paciente,
+    "./routes/Recetas.tsx": $Recetas,
     "./routes/api/Crear_otp.ts": $api_Crear_otp,
     "./routes/index.tsx": $index,
+    "./routes/lista_espera.tsx": $lista_espera,
   },
   islands: {
     "./islands/Auth.tsx": $Auth,
