@@ -1,3 +1,26 @@
 [
-
+  {
+    "nombre": "q",
+    "run": "q",
+    "email": "q@telealae.com",
+    "telefono": "q",
+    "emergencia": "q",
+    "password": "q"
+  },
+  {
+    "nombre": "luis",
+    "run": "22287173-5",
+    "email": "luis@telealae.com",
+    "telefono": "2",
+    "emergencia": "2",
+    "password": "q"
+  },
+  {
+    "nombre": "q",
+    "run": "q",
+    "email": "q@gmail.com",
+    "telefono": "a",
+    "emergencia": "a",
+    "password": "a"
+  }
 ]

@@ -12,6 +12,9 @@ export default function Auth() {
   const [emergencia, setEmergencia] = useState("");
   const [password, setPassword] = useState("");
 
+  // Estado popup
+  const [mensajeEnviado, setMensajeEnviado] = useState(false);
+
   // Crear cuenta
   const handleRegister = async (e: Event) => {
 
@@ -43,22 +46,89 @@ export default function Auth() {
     alert(data.mensaje);
   };
 
-  // Login
-  const handleLogin = (e: Event) => {
+  // LOGIN
+  const handleLogin = async (e: Event) => {
 
     e.preventDefault();
 
-    // Si es médico
-    if (email.endsWith("@telealae.com")) {
+    // VALIDAR CAMPOS VACÍOS
+    if (email.trim() === "" || password.trim() === "") {
 
-      globalThis.location.href = "/medico";
-
-    } else {
-
-      // Paciente
-      globalThis.location.href = "/paciente";
+      alert("Debes ingresar correo y contraseña");
+      return;
 
     }
+
+    try {
+
+      // OBTENER USUARIOS
+      const res = await fetch("/api/usuarios");
+      const data = await res.json();
+
+      // SOPORTA:
+      // { usuarios: [...] }
+      // o directamente [...]
+      const usuarios = data.usuarios || data;
+
+      // BUSCAR USUARIO
+      const usuario = usuarios.find(
+        (u: any) =>
+          u.email === email &&
+          u.password === password
+      );
+
+      // SI NO EXISTE
+      if (!usuario) {
+
+        alert("Correo o contraseña incorrectos");
+        return;
+
+      }
+
+      // GUARDAR USUARIO
+      localStorage.setItem(
+        "usuario",
+        JSON.stringify(usuario)
+      );
+
+      // REDIRECCIÓN
+      if (email.endsWith("@telealae.com")) {
+
+        globalThis.location.href = "/medico";
+
+      } else {
+
+        globalThis.location.href = "/paciente";
+
+      }
+
+    } catch (error) {
+
+      console.error(error);
+      alert("Error al obtener usuarios");
+
+    }
+
+  };
+
+  // POPUP ENVIAR CONTRASEÑA
+  const handleEnviarPassword = () => {
+
+    if (email.trim() === "") {
+
+      alert("Debes ingresar un correo");
+      return;
+
+    }
+
+    setMensajeEnviado(true);
+
+    setTimeout(() => {
+
+      setMensajeEnviado(false);
+
+    }, 3000);
+
   };
 
   return (
@@ -131,10 +201,11 @@ export default function Auth() {
                 class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none placeholder-white/60"
               />
 
-              {/* Botón contraseña temporal */}
+              {/* BOTÓN ENVIAR CONTRASEÑA */}
               <button
                 type="button"
-                class="text-white mt-2"
+                onClick={handleEnviarPassword}
+                class="text-white mt-1 text-left underline"
               >
                 E̲n̲v̲i̲a̲r̲ C̲o̲n̲t̲r̲a̲s̲e̲ñ̲a̲
               </button>
@@ -157,7 +228,7 @@ export default function Auth() {
 
             </div>
 
-            {/* Botón login */}
+            {/* BOTÓN LOGIN */}
             <button
               type="submit"
               onClick={handleLogin}
@@ -279,7 +350,7 @@ export default function Auth() {
 
             </div>
 
-            {/* Botón register */}
+            {/* BOTÓN REGISTER */}
             <button
               type="submit"
               onClick={handleRegister}
@@ -292,6 +363,13 @@ export default function Auth() {
         )}
 
       </div>
+
+      {/* POPUP */}
+      {mensajeEnviado && (
+        <div class="fixed top-5 right-5 bg-green-500 text-white px-6 py-4 rounded-2xl shadow-2xl">
+          Se ha enviado la contraseña a tu correo
+        </div>
+      )}
 
     </div>
   );

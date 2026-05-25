@@ -1,7 +1,5 @@
-export default function Paciente() {
-  return (
-    <div class="p-10">
-      
-    </div>
-  );
-}   
+import Paciente from "../islands/Paciente.tsx";
+
+export default function PacientePage() {
+  return <Paciente />;
+}
