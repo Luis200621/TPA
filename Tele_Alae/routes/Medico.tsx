@@ -1,4 +1,6 @@
+
 export default function Medico() {
+  
   return (
     <div class="min-h-screen bg-[#211c84] text-white">
 
@@ -23,9 +25,7 @@ export default function Medico() {
             Nombre Doctor
           </p>
 
-          <button class="bg-[#4D55CC] px-8 py-2 rounded-full">
-            Cerrar Sesion
-          </button>
+          
         </div>
 
       </header>
