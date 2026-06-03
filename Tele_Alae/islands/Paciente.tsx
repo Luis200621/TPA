@@ -121,7 +121,7 @@ export default function Paciente() {
             Consulta Actual
           </h3>
 
-          <a href="/consulta" class="w-full">
+          <a href="/sala_de_espera" class="w-full">
             <button class="mt-5 bg-[#5B5FEA] hover:bg-[#4b4fd6] transition-all w-full rounded-full py-2 text-white text-[24px]">
               Ver
             </button>

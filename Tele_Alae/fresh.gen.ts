@@ -6,14 +6,14 @@ import * as $_app from "./routes/_app.tsx";
 import * as $api_Crear_otp from "./routes/api/Crear_otp.ts";
 import * as $api_register from "./routes/api/register.ts";
 import * as $api_usuarios from "./routes/api/usuarios.ts";
-import * as $consulta from "./routes/consulta.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $medico from "./routes/medico.tsx";
 import * as $paciente from "./routes/paciente.tsx";
+import * as $sala_de_espera from "./routes/sala_de_espera.tsx";
 import * as $Auth from "./islands/Auth.tsx";
-import * as $Consulta from "./islands/Consulta.tsx";
 import * as $Medico from "./islands/Medico.tsx";
 import * as $Paciente from "./islands/Paciente.tsx";
+import * as $Sala_de_espera from "./islands/Sala_de_espera.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -22,16 +22,16 @@ const manifest = {
     "./routes/api/Crear_otp.ts": $api_Crear_otp,
     "./routes/api/register.ts": $api_register,
     "./routes/api/usuarios.ts": $api_usuarios,
-    "./routes/consulta.tsx": $consulta,
     "./routes/index.tsx": $index,
     "./routes/medico.tsx": $medico,
     "./routes/paciente.tsx": $paciente,
+    "./routes/sala_de_espera.tsx": $sala_de_espera,
   },
   islands: {
     "./islands/Auth.tsx": $Auth,
-    "./islands/Consulta.tsx": $Consulta,
     "./islands/Medico.tsx": $Medico,
     "./islands/Paciente.tsx": $Paciente,
+    "./islands/Sala_de_espera.tsx": $Sala_de_espera,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
