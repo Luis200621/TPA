@@ -81,3 +81,10 @@ deno task update     # Actualiza Fresh a la última versión
 - El servidor se reiniciará automáticamente cuando realices cambios
 - Abre tu navegador en `http://localhost:8000` para ver la aplicación
 - Cualquier error de TypeScript aparecerá en la consola
+
+## 👨‍💻 Equipo de Desarrollo
+| Integrante | Rama |
+|------------|------|
+| Ana Jimena Villegas Morales | Rama-Ana |
+| Samir Ivan Arana Atiya | Rama-Samir-Glitch |
+| Luis Etiem Muñoz Saez | Rama-Luis |
