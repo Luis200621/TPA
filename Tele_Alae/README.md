@@ -1,4 +1,14 @@
-# Tele Alae - Sistema de Telemedicina Chiloé
+
+# 🏥 Tele Alae - Sistema de Telemedicina Chiloé
+
+Sistema de telemedicina desarrollado para el archipiélago de Chiloé, 
+que permite la gestión de consultas médicas remotas entre pacientes y médicos.
+
+## 👥 Vistas del Sistema
+- **Auth** - Autenticación y registro de usuarios mediante OTP
+- **Médico** - Panel de gestión para médicos
+- **Paciente** - Vista del paciente para seguimiento de consultas
+- **Sala de Espera** - Cola de espera virtual para consultas
 
 Tu nuevo proyecto Fresh está listo. Puedes seguir la guía de inicio de Fresh aquí: https://fresh.deno.dev/docs/getting-started
 
