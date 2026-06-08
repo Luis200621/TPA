@@ -1,4 +1,38 @@
-# Tele Alae - Sistema de Telemedicina Chiloé
+
+# 🏥 Tele Alae - Sistema de Telemedicina Chiloé
+
+Sistema de telemedicina desarrollado para el archipiélago de Chiloé, 
+que permite la gestión de consultas médicas remotas entre pacientes y médicos.
+
+## 👥 Vistas del Sistema
+
+### 🔐 Auth - Autenticación
+- **Iniciar Sesión** - Formulario con correo y contraseña
+- **Crear Cuenta** - Registro con Nombre Completo, RUN, Email, 
+  Número Telefónico y Contacto de Emergencia
+- Verificación mediante código OTP
+
+### 🏥 Médico - Panel del Doctor
+- Resumen de **Pacientes Totales**, **Pacientes Críticos** y 
+  **Consultas Activas**
+- **Lista de Espera** con columnas: Nombre, Síntomas, Prioridad, 
+  Tiempo, Status y Acción
+- Vista detallada del paciente en consulta
+- Acciones disponibles: **Llamar**, **Urgencias** y **Generar Receta**
+- Generación de recetas: **Retenida**, **Simple** o **Cheque**
+- Selección de tipo de especialidad médica
+
+### 🧑‍⚕️ Paciente - Panel del Paciente  
+- Bienvenida personalizada con nombre del paciente
+- Resumen de **Estado Actual**, **Nivel de Prioridad** y 
+  **Fecha de Consulta**
+- Acceso a **Agendar Hora** e **Historial de Consultas Médicas**
+
+### ⏳ Sala de Espera
+- Vista en tiempo real del estado de la consulta
+- Muestra síntomas, prioridad, tiempo de espera y status
+- Se actualiza automáticamente cuando el médico llama al paciente
+
 
 Tu nuevo proyecto Fresh está listo. Puedes seguir la guía de inicio de Fresh aquí: https://fresh.deno.dev/docs/getting-started
 
@@ -47,3 +81,10 @@ deno task update     # Actualiza Fresh a la última versión
 - El servidor se reiniciará automáticamente cuando realices cambios
 - Abre tu navegador en `http://localhost:8000` para ver la aplicación
 - Cualquier error de TypeScript aparecerá en la consola
+
+## 👨‍💻 Equipo de Desarrollo
+| Integrante | Rama |
+|------------|------|
+| Ana Jimena Villegas Morales | Rama-Ana |
+| Samir Ivan Arana Atiya | Rama-Samir-Glitch |
+| Luis Etiem Muñoz Saez | Rama-Luis |
