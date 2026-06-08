@@ -78,7 +78,6 @@ deno task update     # Actualiza Fresh a la última versión
 
 ## 📝 Notas
 
-- El servidor se reiniciará automáticamente cuando realices cambios
 - Abre tu navegador en `http://localhost:8000` para ver la aplicación
 - Cualquier error de TypeScript aparecerá en la consola
 

@@ -4,7 +4,7 @@ export default function Auth() {
 
   const [tab, setTab] = useState("login");
 
-  // Estados del formulario
+  // Estados del formulario de registro
   const [nombre, setNombre] = useState("");
   const [run, setRun] = useState("");
   const [email, setEmail] = useState("");
@@ -18,6 +18,7 @@ export default function Auth() {
   // Crear cuenta
   const handleRegister = async (e: Event) => {
 
+  
     e.preventDefault();
 
     const usuario = {
@@ -70,14 +71,14 @@ export default function Auth() {
       // o directamente [...]
       const usuarios = data.usuarios || data;
 
-      // BUSCAR USUARIO
+      // BUSCAR USUARIO QUE COINCIDA CON EMAIL Y CONTRASEÑA
       const usuario = usuarios.find(
-        (u: any) =>
+        (u:any) =>
           u.email === email &&
           u.password === password
       );
 
-      // SI NO EXISTE
+      // SI NO SE ENCUENTRA AL USUARIO
       if (!usuario) {
 
         alert("Correo o contraseña incorrectos");
@@ -85,13 +86,13 @@ export default function Auth() {
 
       }
 
-      // GUARDAR USUARIO
+      // GUARDAR USUARIO EN LocalStorage PARA LA SESIÓN
       localStorage.setItem(
         "usuario",
         JSON.stringify(usuario)
       );
 
-      // REDIRECCIÓN
+      // REDIRIGIR SEGUN TIPO DE USUARIO
       if (email.endsWith("@telealae.com")) {
 
         globalThis.location.href = "/medico";
@@ -110,8 +111,11 @@ export default function Auth() {
     }
 
   };
-
-  // POPUP ENVIAR CONTRASEÑA
+    /**
+   * Simula el envío de la contraseña al correo del usuario.
+   * Muestra un popup de confirmación por 3 segundos.
+   */
+  
   const handleEnviarPassword = () => {
 
     if (email.trim() === "") {
