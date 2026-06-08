@@ -4,7 +4,7 @@ export default function Auth() {
 
   const [tab, setTab] = useState("login");
 
-  // Estados del formulario de registro
+  // ESTADOS DEL FORMULARIO DE REGISTRO 
   const [nombre, setNombre] = useState("");
   const [run, setRun] = useState("");
   const [email, setEmail] = useState("");
@@ -12,10 +12,10 @@ export default function Auth() {
   const [emergencia, setEmergencia] = useState("");
   const [password, setPassword] = useState("");
 
-  // Estado popup
+  // ESTADO POPUP
   const [mensajeEnviado, setMensajeEnviado] = useState(false);
 
-  // Crear cuenta
+  // CREAR CUENTA
   const handleRegister = async (e: Event) => {
 
   
@@ -112,8 +112,8 @@ export default function Auth() {
 
   };
     /**
-   * Simula el envío de la contraseña al correo del usuario.
-   * Muestra un popup de confirmación por 3 segundos.
+   * SIMULA EL ENVÍO DE LA CONTRASEÑA AL CORREO DEL USUARIO.
+   * MUESTRA UN POPUP DE CONFIRMACIÓN POR 3 SEGUNDOS. 
    */
   
   const handleEnviarPassword = () => {
