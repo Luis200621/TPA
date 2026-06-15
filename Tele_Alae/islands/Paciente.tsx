@@ -20,7 +20,7 @@ export default function Paciente() {
           <img
             src="/Logo_a_color.png"
             alt="Logo"
-            class="w-20 h-20 object-cover border-2 border-cyan-400"
+            class="w-20 h-20 object-cover"
           />
 
           <h1 class="text-white text-[42px] font-light">
@@ -107,7 +107,7 @@ export default function Paciente() {
             Agendar Hora
           </h3>
 
-          <a href="/agendar" class="w-full">
+          <a href="/agendarhora" class="w-full">
             <button class="mt-5 bg-[#5B5FEA] hover:bg-[#4b4fd6] transition-all w-full rounded-full py-2 text-white text-[24px]">
               Agendar
             </button>

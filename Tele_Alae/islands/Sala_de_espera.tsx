@@ -1,8 +1,7 @@
 import { useState } from "preact/hooks";
 
 export default function SalaDeEspera() {
-    const [open, setOpen] = useState(false);
-
+  const [open, setOpen] = useState(false);
   const usuario = JSON.parse(
     localStorage.getItem("usuario") || "null"
   );

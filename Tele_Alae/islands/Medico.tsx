@@ -28,7 +28,7 @@ export default function Medico() {
         <div class="text-center">
 
           <h2 class="text-white text-[34px] font-semibold">
-            Bienvenido {usuario ? usuario.nombre : "Paciente"}
+            Bienvenido {usuario ? usuario.nombre : "Medico"}
           </h2>
 
           <p class="text-[#D9D9FF] text-[22px]">
