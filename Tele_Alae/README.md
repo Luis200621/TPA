@@ -1,16 +1,89 @@
-# Fresh project
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+# 🏥 Tele Alae - Sistema de Telemedicina Chiloé
 
-### Usage
+Sistema de telemedicina desarrollado para el archipiélago de Chiloé, 
+que permite la gestión de consultas médicas remotas entre pacientes y médicos.
 
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
+## 👥 Vistas del Sistema
 
-Then start the project:
+### 🔐 Auth - Autenticación
+- **Iniciar Sesión** - Formulario con correo y contraseña
+- **Crear Cuenta** - Registro con Nombre Completo, RUN, Email, 
+  Número Telefónico y Contacto de Emergencia
+- Verificación mediante código OTP
 
+### 🏥 Médico - Panel del Doctor
+- Resumen de **Pacientes Totales**, **Pacientes Críticos** y 
+  **Consultas Activas**
+- **Lista de Espera** con columnas: Nombre, Síntomas, Prioridad, 
+  Tiempo, Status y Acción
+- Vista detallada del paciente en consulta
+- Acciones disponibles: **Llamar**, **Urgencias** y **Generar Receta**
+- Generación de recetas: **Retenida**, **Simple** o **Cheque**
+- Selección de tipo de especialidad médica
+
+### 🧑‍⚕️ Paciente - Panel del Paciente  
+- Bienvenida personalizada con nombre del paciente
+- Resumen de **Estado Actual**, **Nivel de Prioridad** y 
+  **Fecha de Consulta**
+- Acceso a **Agendar Hora** e **Historial de Consultas Médicas**
+
+### ⏳ Sala de Espera
+- Vista en tiempo real del estado de la consulta
+- Muestra síntomas, prioridad, tiempo de espera y status
+- Se actualiza automáticamente cuando el médico llama al paciente
+
+
+Tu nuevo proyecto Fresh está listo. Puedes seguir la guía de inicio de Fresh aquí: https://fresh.deno.dev/docs/getting-started
+
+## 📋 Requisitos Previos
+
+Asegúrate de tener instalado **Deno**. Si no lo tienes, descárgalo aquí: https://deno.land/manual/getting_started/installation
+
+## 🚀 Cómo Iniciar el Proyecto
+
+### 1. Navega a la carpeta del proyecto
+```powershell
+cd Tele_Alae
 ```
+
+### 2. Inicia el servidor de desarrollo
+```powershell
 deno task start
 ```
 
-This will watch the project directory and restart as necessary.
+Esto vigilará los cambios en el proyecto y se reiniciará automáticamente.
+
+## 📦 Librerías Incluidas
+
+- **Fresh** - Framework web moderno para Deno
+- **Preact** - Alternativa ligera a React
+- **Tailwind CSS** - Framework de CSS para estilos
+- **Preact Signals** - Gestión de estado reactivo
+- **Zod** - Validación de tipos en tiempo de ejecución
+- **Jose** - Manejo de JWT tokens
+- **Log** - Sistema de logging
+- **Mongo/Postgres** - Drivers de base de datos
+- **Oak** - Framework HTTP alternativo
+
+## 🛠️ Comandos Disponibles
+
+```powershell
+deno task start      # Inicia el servidor de desarrollo
+deno task build      # Construye la aplicación
+deno task preview    # Vista previa de la aplicación compilada
+deno task check      # Verifica formato, linting y tipos
+deno task update     # Actualiza Fresh a la última versión
+```
+
+## 📝 Notas
+
+- Abre tu navegador en `http://localhost:8000` para ver la aplicación
+- Cualquier error de TypeScript aparecerá en la consola
+
+## 👨‍💻 Equipo de Desarrollo
+| Integrante | Rama |
+|------------|------|
+| Ana Jimena Villegas Morales | Rama-Ana |
+| Samir Ivan Arana Atiya | Rama-Samir-Glitch |
+| Luis Etiem Muñoz Saez | Rama-Luis |

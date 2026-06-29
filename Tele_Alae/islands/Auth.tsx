@@ -4,7 +4,7 @@ export default function Auth() {
 
   const [tab, setTab] = useState("login");
 
-  // Estados del formulario
+  // ESTADOS DEL FORMULARIO DE REGISTRO 
   const [nombre, setNombre] = useState("");
   const [run, setRun] = useState("");
   const [email, setEmail] = useState("");
@@ -12,12 +12,13 @@ export default function Auth() {
   const [emergencia, setEmergencia] = useState("");
   const [password, setPassword] = useState("");
 
-  // Estado popup
+  // ESTADO POPUP
   const [mensajeEnviado, setMensajeEnviado] = useState(false);
 
-  // Crear cuenta
+  // CREAR CUENTA
   const handleRegister = async (e: Event) => {
 
+  
     e.preventDefault();
 
     const usuario = {
@@ -70,14 +71,14 @@ export default function Auth() {
       // o directamente [...]
       const usuarios = data.usuarios || data;
 
-      // BUSCAR USUARIO
+      // BUSCAR USUARIO QUE COINCIDA CON EMAIL Y CONTRASEÑA
       const usuario = usuarios.find(
-        (u: any) =>
+        (u:any) =>
           u.email === email &&
           u.password === password
       );
 
-      // SI NO EXISTE
+      // SI NO SE ENCUENTRA AL USUARIO
       if (!usuario) {
 
         alert("Correo o contraseña incorrectos");
@@ -85,13 +86,13 @@ export default function Auth() {
 
       }
 
-      // GUARDAR USUARIO
+      // GUARDAR USUARIO EN LocalStorage PARA LA SESIÓN
       localStorage.setItem(
         "usuario",
         JSON.stringify(usuario)
       );
 
-      // REDIRECCIÓN
+      // REDIRIGIR SEGUN TIPO DE USUARIO
       if (email.endsWith("@telealae.com")) {
 
         globalThis.location.href = "/medico";
@@ -110,8 +111,11 @@ export default function Auth() {
     }
 
   };
-
-  // POPUP ENVIAR CONTRASEÑA
+    /**
+   * SIMULA EL ENVÍO DE LA CONTRASEÑA AL CORREO DEL USUARIO.
+   * MUESTRA UN POPUP DE CONFIRMACIÓN POR 3 SEGUNDOS. 
+   */
+  
   const handleEnviarPassword = () => {
 
     if (email.trim() === "") {
@@ -132,7 +136,7 @@ export default function Auth() {
   };
 
   return (
-    <div class="min-h-screen bg-[#211C84] flex flex-col items-center justify-center">
+    <div class="min-h-screen bg-[#ffffff] flex flex-col items-center justify-center">
 
       {/* Logo */}
       <img
@@ -141,45 +145,45 @@ export default function Auth() {
       />
 
       {/* Título */}
-      <h1 class="text-7xl text-white font-bold mb-2">
+      <h1 class="text-7xl text-[#211c84] font-bold mb-2">
         Tele Alae
       </h1>
 
       {/* Subtítulo */}
       <div class="p-0.5 mb-12">
-        <p class="text-white/70 mb-2">
+        <p class="text-[#211c84]/70 mb-2">
           Sistema de Telemedicina Chiloe
         </p>
       </div>
 
       {/* Cuadro principal */}
-      <div class="bg-[#7473D1] border border-white/30 rounded-3xl p-10 w-full max-w-[1000px] shadow-2xl backdrop-blur-lg">
+      <div class="bg-[#4d55cc] border border-white/30 rounded-3xl p-10 w-full max-w-[1000px] shadow-2xl backdrop-blur-lg">
 
         {/* Tabs */}
-        <div class="flex mb-6">
+        <div class="flex -mx-10 -mt-10 mb-6 overflow-hidden rounded-t-3xl bg-[#39409d]">
 
           <button
             onClick={() => setTab("login")}
-            class={`flex-1 py-2 text-white border-b-2 ${
+            class={`flex-1 py-4 text-1xl transition-all border-b-4 ${
               tab === "login"
-                ? "border-white"
-                : "border-transparent text-white/60"
+                ? "text-white border-white"
+                : "text-white/60 border-transparent hover:text-white"
             }`}
           >
             Iniciar Sesión
           </button>
-
+          
           <button
             onClick={() => setTab("register")}
-            class={`flex-1 py-2 text-white border-b-2 ${
+            class={`flex-1 py-4 text-1xl transition-all border-b-4 ${
               tab === "register"
-                ? "border-white"
-                : "border-transparent text-white/60"
+                ? "text-white border-white"
+                : "text-white/60 border-transparent hover:text-white"
             }`}
           >
             Crear Cuenta
           </button>
-
+          
         </div>
 
         {/* LOGIN */}
@@ -198,7 +202,7 @@ export default function Auth() {
                 value={email}
                 onInput={(e) => setEmail(e.currentTarget.value)}
                 placeholder="correo@algo.com"
-                class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none placeholder-white/60"
+                class="w-full mt-1 p-3 rounded-full bg-[#b5a8d5] text-white outline-none placeholder-white/60"
               />
 
               {/* BOTÓN ENVIAR CONTRASEÑA */}
@@ -223,7 +227,7 @@ export default function Auth() {
                 value={password}
                 onInput={(e) => setPassword(e.currentTarget.value)}
                 placeholder="********"
-                class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none placeholder-white/60"
+                class="w-full mt-1 p-3 rounded-full bg-[#b5a8d5] text-white outline-none placeholder-white/60"
               />
 
             </div>
@@ -259,7 +263,7 @@ export default function Auth() {
                   value={nombre}
                   onInput={(e) => setNombre(e.currentTarget.value)}
                   placeholder="Victor Arcides Saldivia Vera"
-                  class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none"
+                  class="w-full mt-1 p-3 rounded-full bg-[#b5a8d5] text-white outline-none placeholder-white/60"
                 />
 
               </div>
@@ -275,7 +279,7 @@ export default function Auth() {
                   value={run}
                   onInput={(e) => setRun(e.currentTarget.value)}
                   placeholder="12345678-9"
-                  class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none"
+                  class="w-full mt-1 p-3 rounded-full bg-[#b5a8d5] text-white outline-none placeholder-white/60"
                 />
 
               </div>
@@ -294,7 +298,7 @@ export default function Auth() {
                 value={email}
                 onInput={(e) => setEmail(e.currentTarget.value)}
                 placeholder="correo@algo.com"
-                class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none"
+                class="w-full mt-1 p-3 rounded-full bg-[#b5a8d5] text-white outline-none placeholder-white/60"
               />
 
             </div>
@@ -311,7 +315,7 @@ export default function Auth() {
                 value={telefono}
                 onInput={(e) => setTelefono(e.currentTarget.value)}
                 placeholder="+56 9 1234 5678"
-                class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none"
+                class="w-full mt-1 p-3 rounded-full bg-[#b5a8d5] text-white outline-none placeholder-white/60"
               />
 
             </div>
@@ -328,7 +332,7 @@ export default function Auth() {
                 value={emergencia}
                 onInput={(e) => setEmergencia(e.currentTarget.value)}
                 placeholder="+56 9 1234 5678"
-                class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none"
+                class="w-full mt-1 p-3 rounded-full bg-[#b5a8d5] text-white outline-none placeholder-white/60"
               />
 
             </div>
@@ -345,7 +349,7 @@ export default function Auth() {
                 value={password}
                 onInput={(e) => setPassword(e.currentTarget.value)}
                 placeholder="********"
-                class="w-full mt-1 p-3 rounded-full bg-[#4D55CC] text-white outline-none"
+                class="w-full mt-1 p-3 rounded-full bg-[#b5a8d5] text-white outline-none placeholder-white/60"
               />
 
             </div>
