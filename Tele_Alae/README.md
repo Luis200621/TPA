@@ -75,33 +75,35 @@ deno task preview    # Vista previa de la aplicación compilada
 deno task check      # Verifica formato, linting y tipos
 deno task update     # Actualiza Fresh a la última versión
 ``
-🧩 Patrones de Diseño en Tele Alae
-El sistema aplica varios patrones de diseño para organizar la lógica de las consultas médicas y mantener el código limpio y extensible:
+## 🧩 Patrones de Diseño en Tele Alae
 
-Singleton  
-Centraliza la persistencia de consultas y recetas médicas en la clase HistoriaMédico.
-Garantiza una sola instancia de conexión a Deno KV, evitando duplicaciones e inconsistencias.
+El sistema aplica varios **patrones de diseño** para organizar la lógica de las consultas médicas y mantener el código limpio y extensible:
 
-State  
-Gestiona los flujos y transiciones de la consulta médica (en espera, con médico, en exámenes).
-Sin este patrón, el código estaría lleno de if/else o switch gigantes para controlar cada estado.
+- **Singleton**  
+  Centraliza la persistencia de consultas y recetas médicas en la clase *HistoriaMédico*.  
+  Garantiza una sola instancia de conexión a Deno KV, evitando duplicaciones e inconsistencias.
 
-Strategy  
-El módulo de Triage permite cambiar dinámicamente las reglas de clasificación de urgencia (C1 a C5) según los síntomas.
-Se pueden intercambiar distintos algoritmos: por palabras clave, asignación manual o futuros modelos con signos vitales.
+- **State**  
+  Gestiona los flujos y transiciones de la consulta médica (en espera, con médico, en exámenes).  
+  Sin este patrón, el código estaría lleno de `if/else` o `switch` gigantes para controlar cada estado.
 
-Template Method  
-La clase Receta define los pasos y formato legal para emitir recetas médicas.
-Asegura que todas las recetas cumplan con la estructura requerida (retenida, simple o cheque).
+- **Strategy**  
+  El módulo de *Triage* permite cambiar dinámicamente las reglas de clasificación de urgencia (C1 a C5) según los síntomas.  
+  Se pueden intercambiar distintos algoritmos: por palabras clave, asignación manual o futuros modelos con signos vitales.
 
-Observer  
-La Lista de Espera se actualiza automáticamente cuando cambia el estado de un paciente dentro de la clase Consulta.
-Esto permite que médicos y pacientes vean en tiempo real las actualizaciones.
+- **Template Method**  
+  La clase *Receta* define los pasos y formato legal para emitir recetas médicas.  
+  Asegura que todas las recetas cumplan con la estructura requerida (retenida, simple o cheque).
 
-🔧 Estado actual
-Implementados pero requieren revisión: State, Strategy, Observer
+- **Observer**  
+  La *Lista de Espera* se actualiza automáticamente cuando cambia el estado de un paciente dentro de la clase *Consulta*.  
+  Esto permite que médicos y pacientes vean en tiempo real las actualizaciones.
 
-Pendientes de implementación: Template Method, Singleton`
+---
+
+### 🔧 Estado actual
+- **Implementados pero requieren revisión:** State, Strategy, Observer  
+- **Pendientes de implementación:** Template Method, Singleton
 
 ## 📝 Notas
 
