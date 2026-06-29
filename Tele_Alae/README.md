@@ -74,7 +74,7 @@ deno task build      # Construye la aplicación
 deno task preview    # Vista previa de la aplicación compilada
 deno task check      # Verifica formato, linting y tipos
 deno task update     # Actualiza Fresh a la última versión
-```
+deno
 
 ## 📝 Notas
 
