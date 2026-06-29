@@ -74,7 +74,7 @@ deno task build      # Construye la aplicación
 deno task preview    # Vista previa de la aplicación compilada
 deno task check      # Verifica formato, linting y tipos
 deno task update     # Actualiza Fresh a la última versión
-``
+```
 ## 🧩 Patrones de Diseño en Tele Alae
 
 El sistema aplica varios **patrones de diseño** para organizar la lógica de las consultas médicas y mantener el código limpio y extensible:
@@ -116,3 +116,4 @@ El sistema aplica varios **patrones de diseño** para organizar la lógica de la
 | Ana Jimena Villegas Morales | Rama-Ana |
 | Samir Ivan Arana Atiya | Rama-Samir-Glitch |
 | Luis Etiem Muñoz Saez | Rama-Luis |
+```
