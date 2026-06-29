@@ -6,10 +6,10 @@ export default function SalaDeEspera() {
     localStorage.getItem("usuario") || "null"
   );
   return (
-    <div class="min-h-screen bg-[#211b8f] text-white">
+    <div class="min-h-screen bg-[#ffffff] text-white">
 
       {/* HEADER */}
-      <header class="bg-[#7a73d1] flex items-center justify-between px-6 py-3">
+      <header class="bg-[#4d55cc] flex items-center justify-between px-6 py-3">
 
         {/* LOGO + NOMBRE */}
         <div class="flex items-center gap-3">
@@ -55,13 +55,13 @@ export default function SalaDeEspera() {
         </div>
       </header>
       {open && (
-        <div class="absolute right-4 top-20 bg-[#b5a8d5] w-52 rounded-2xl p-6 shadow-2xl z-50">
+        <div class="absolute right-4 top-20 bg-[#4d55cc] w-52 rounded-2xl p-6 shadow-2xl z-50">
 
-          <button class="block w-full bg-[#4D55CC] text-white py-3 rounded-full mb-6 hover:bg-[#3b42b0] transition">
+          <button class="block w-full bg-[#39409d] text-white py-3 rounded-full mb-6 hover:bg-[#3b42b0] transition">
             Opciones
           </button>
 
-          <button class="block w-full bg-[#4D55CC] text-white py-3 rounded-full mb-6 hover:bg-[#3b42b0] transition">
+          <button class="block w-full bg-[#39409d] text-white py-3 rounded-full mb-6 hover:bg-[#3b42b0] transition">
             Ayuda
           </button>
 
@@ -71,7 +71,7 @@ export default function SalaDeEspera() {
               localStorage.removeItem("usuario");
               globalThis.location.href = "/";
             }}
-            class="block w-full bg-[#4D55CC] text-white py-3 rounded-full hover:bg-[#3b42b0] transition"
+            class="block w-full bg-[#39409d] text-white py-3 rounded-full hover:bg-[#3b42b0] transition"
           >
             Cerrar sesión
           </button>
@@ -89,7 +89,7 @@ export default function SalaDeEspera() {
           </h2>
 
           {/* ESTADO */}
-          <div class="bg-[#7d73d9] rounded-3xl p-6 mb-10">
+          <div class="bg-[#4d55cc] rounded-3xl p-6 mb-10">
 
             <h3 class="text-3xl text-center font-serif">
               Estado Actual
@@ -99,7 +99,7 @@ export default function SalaDeEspera() {
               "Posición en fila"
             </p>
 
-            <div class="bg-[#5353d8] rounded-full mt-4 py-2 text-center">
+            <div class="bg-[#39409d] rounded-full mt-4 py-2 text-center">
               No registrado / Registrado
             </div>
 
@@ -109,26 +109,26 @@ export default function SalaDeEspera() {
           <div class="flex gap-4">
 
             {/* FECHA */}
-            <div class="bg-[#7d73d9] rounded-3xl p-6 w-1/2">
+            <div class="bg-[#4d55cc] rounded-3xl p-6 w-1/2">
 
               <h3 class="text-2xl text-center font-serif">
                 Fecha Consulta
               </h3>
 
-              <div class="bg-[#5353d8] rounded-full mt-6 py-2 text-center">
+              <div class="bg-[#39409d] rounded-full mt-6 py-2 text-center">
                 "Fecha"
               </div>
 
             </div>
 
             {/* PRIORIDAD */}
-            <div class="bg-[#7d73d9] rounded-3xl p-6 w-1/2">
+            <div class="bg-[#4d55cc] rounded-3xl p-6 w-1/2">
 
               <h3 class="text-2xl text-center font-serif">
                 Nivel De Prioridad
               </h3>
 
-              <div class="bg-[#5353d8] rounded-full mt-6 py-2 text-center">
+              <div class="bg-[#39409d] rounded-full mt-6 py-2 text-center">
                 "Nivel"
               </div>
 
@@ -139,7 +139,7 @@ export default function SalaDeEspera() {
         </section>
 
         {/* DERECHA */}
-        <section class="w-[60%] bg-[#7d73d9] rounded-3xl overflow-hidden">
+        <section class="w-[60%] bg-[#4d55cc] rounded-3xl overflow-hidden">
 
           <div class="text-center text-4xl py-6 font-serif">
             Lista De Espera
@@ -147,7 +147,7 @@ export default function SalaDeEspera() {
 
           <table class="w-full">
 
-            <thead class="bg-[#9187eb]">
+            <thead class="bg-[#5b64ff]">
 
               <tr class="text-lg">
 
@@ -162,25 +162,32 @@ export default function SalaDeEspera() {
 
             <tbody>
 
-              <tr class="bg-[#4d4dcc] h-16">
+              <tr class="bg-[#4d55cc] h-16">
                 <td class="text-center">Juan Pérez</td>
                 <td class="text-center">15 min</td>
                 <td class="text-center">En espera</td>
                 <td class="text-center">Alta</td>
               </tr>
 
-              <tr class="bg-[#7d73d9] h-16">
+              <tr class="bg-[#5b64ff] h-16">
                 <td class="text-center">Ana Soto</td>
                 <td class="text-center">25 min</td>
                 <td class="text-center">Registrado</td>
                 <td class="text-center">Media</td>
               </tr>
 
-              <tr class="bg-[#4d4dcc] h-16">
+              <tr class="bg-[#4d55cc] h-16">
                 <td class="text-center">Carlos Díaz</td>
                 <td class="text-center">10 min</td>
                 <td class="text-center">Consulta</td>
                 <td class="text-center">Urgente</td>
+              </tr>
+              
+              <tr class="bg-[#5b64ff] h-16">
+                <td class="text-center">Carla Salinas</td>
+                <td class="text-center">30 min</td>
+                <td class="text-center">En Espera</td>
+                <td class="text-center">Baja</td>
               </tr>
 
             </tbody>
@@ -192,7 +199,7 @@ export default function SalaDeEspera() {
       </main>
 
       {/* FOOTER */}
-      <footer class="bg-[#7d73d9] h-10 mt-10"></footer>
+      <footer class="mt-24 h-[80px] bg-[#4d55cc]" />
 
     </div>
   );

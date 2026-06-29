@@ -13,9 +13,9 @@ export default function Medico() {
   }, []);
 
   return (
-    <div class="min-h-screen relative bg-[#211c84] text-white">
+    <div class="min-h-screen relative bg-[#ffffff] text-white">
       {/* HEADER */}
-      <header class="bg-[#7a73d1] flex items-center justify-between px-6 py-3">
+      <header class="bg-[#4d55cc] flex items-center justify-between px-6 py-3">
       
         {/* IZQUIERDA */}
         <div class="flex items-center gap-4">
@@ -50,11 +50,11 @@ export default function Medico() {
       </header>
 
       {open && (
-        <div class="absolute right-4 top-20 bg-[#b5a8d5] w-52 rounded-2xl p-6 shadow-2xl">
-          <button class="block w-full bg-[#4D55CC] text-white py-3 rounded-full mb-6">
+        <div class="absolute right-4 top-20 bg-[#4d55cc] w-52 rounded-2xl p-6 shadow-2xl">
+          <button class="block w-full bg-[#39409d] text-white py-3 rounded-full mb-6">
             Opciones
           </button>
-          <button class="block w-full bg-[#4D55CC] text-white py-3 rounded-full mb-6">
+          <button class="block w-full bg-[#39409d] text-white py-3 rounded-full mb-6">
             Ayuda
           </button>
           <button
@@ -63,7 +63,7 @@ export default function Medico() {
               localStorage.removeItem("usuario");
               globalThis.location.href = "/";
             }}
-            class="block w-full bg-[#4D55CC] text-white py-3 rounded-full"
+            class="block w-full bg-[#39409d] text-white py-3 rounded-full"
           >
             Cerrar sesión
           </button>
@@ -78,25 +78,25 @@ export default function Medico() {
         {/* TARJETAS */}
         <div class="flex justify-center gap-20 mb-14">
           {/* CARD 1 */}
-          <div class="bg-[#7a73d1] w-[220px] rounded-[30px] p-5 text-center">
+          <div class="bg-[#4d55cc] w-[220px] rounded-[30px] p-5 text-center">
             <h3 class="text-2xl mb-16">Pacientes Totales</h3>
-            <div class="bg-[#4D55CC] rounded-full py-3">
+            <div class="bg-[#39409d] rounded-full py-3">
               “Cantidad”
             </div>
           </div>
 
           {/* CARD 2 */}
-          <div class="bg-[#7a73d1] w-[220px] rounded-[30px] p-5 text-center">
+          <div class="bg-[#4d55cc] w-[220px] rounded-[30px] p-5 text-center">
             <h3 class="text-2xl mb-8">Pacientes Críticos</h3>
-            <div class="bg-[#4D55CC] rounded-full py-3">
+            <div class="bg-[#39409d] rounded-full py-3">
               “Número”
             </div>
           </div>
 
           {/* CARD 3 */}
-          <div class="bg-[#7a73d1] w-[220px] rounded-[30px] p-5 text-center">
+          <div class="bg-[#4d55cc] w-[220px] rounded-[30px] p-5 text-center">
             <h3 class="text-2xl mb-8">Consultas activas</h3>
-            <div class="bg-[#4D55CC] rounded-full py-3">
+            <div class="bg-[#39409d] rounded-full py-3">
               “Número”
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function Medico() {
           </div>
 
           {/* ENCABEZADOS */}
-          <div class="grid grid-cols-6 bg-[#7a73d1] px-6 py-5 text-2xl">
+          <div class="grid grid-cols-6 bg-[#5b64ff] px-6 py-5 text-2xl">
             <div>Nombre Paciente</div>
             <div>Síntomas</div>
             <div>Prioridad</div>
@@ -123,7 +123,7 @@ export default function Medico() {
           {[1, 2, 3, 4, 5, 6].map((_, index) => (
             <div
               key={index}
-              class="grid grid-cols-6 items-center bg-[#4D55CC] even:bg-[#7a73d1] px-6 py-4"
+              class="grid grid-cols-6 items-center bg-[#4D55CC] even:bg-[#5b64ff] px-6 py-4"
             >
               <div></div>
               <div></div>
@@ -131,7 +131,7 @@ export default function Medico() {
               <div></div>
               <div></div>
               <div class="flex justify-center">
-                <button class="bg-[#5b64ff] w-24 h-10 rounded-full"></button>
+                <button class="bg-[#39409d] w-24 h-10 rounded-full"></button>
               </div>
             </div>
           ))}
