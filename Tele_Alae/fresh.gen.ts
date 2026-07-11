@@ -5,6 +5,8 @@
 import * as $_app from "./routes/_app.tsx";
 import * as $agendarhora from "./routes/agendarhora.tsx";
 import * as $api_Crear_otp from "./routes/api/Crear_otp.ts";
+import * as $api_register from "./routes/api/register.ts";
+import * as $api_usuarios from "./routes/api/usuarios.ts";
 import * as $index from "./routes/index.tsx";
 import * as $medico from "./routes/medico.tsx";
 import * as $paciente from "./routes/paciente.tsx";
@@ -20,6 +22,8 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/agendarhora.tsx": $agendarhora,
     "./routes/api/Crear_otp.ts": $api_Crear_otp,
+    "./routes/api/register.ts": $api_register,
+    "./routes/api/usuarios.ts": $api_usuarios,
     "./routes/index.tsx": $index,
     "./routes/medico.tsx": $medico,
     "./routes/paciente.tsx": $paciente,
