@@ -19,7 +19,7 @@ import * as $Auth from "./islands/Auth.tsx";
 import * as $ConsultaMedica from "./islands/ConsultaMedica.tsx";
 import * as $Medico from "./islands/Medico.tsx";
 import * as $Paciente from "./islands/Paciente.tsx";
-import * as $Recetas from "./islands/Recetas.tsx";
+import * as $Receta from "./islands/Receta.tsx";
 import * as $Sala_de_espera from "./islands/Sala_de_espera.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -44,7 +44,7 @@ const manifest = {
     "./islands/ConsultaMedica.tsx": $ConsultaMedica,
     "./islands/Medico.tsx": $Medico,
     "./islands/Paciente.tsx": $Paciente,
-    "./islands/Recetas.tsx": $Recetas,
+    "./islands/Receta.tsx": $Receta,
     "./islands/Sala_de_espera.tsx": $Sala_de_espera,
   },
   baseUrl: import.meta.url,
