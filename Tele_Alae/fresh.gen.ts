@@ -12,12 +12,14 @@ import * as $consulta from "./routes/consulta.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $medico from "./routes/medico.tsx";
 import * as $paciente from "./routes/paciente.tsx";
+import * as $receta from "./routes/receta.tsx";
 import * as $sala_de_espera from "./routes/sala_de_espera.tsx";
 import * as $AgendarHora from "./islands/AgendarHora.tsx";
 import * as $Auth from "./islands/Auth.tsx";
 import * as $ConsultaMedica from "./islands/ConsultaMedica.tsx";
 import * as $Medico from "./islands/Medico.tsx";
 import * as $Paciente from "./islands/Paciente.tsx";
+import * as $Recetas from "./islands/Recetas.tsx";
 import * as $Sala_de_espera from "./islands/Sala_de_espera.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -33,6 +35,7 @@ const manifest = {
     "./routes/index.tsx": $index,
     "./routes/medico.tsx": $medico,
     "./routes/paciente.tsx": $paciente,
+    "./routes/receta.tsx": $receta,
     "./routes/sala_de_espera.tsx": $sala_de_espera,
   },
   islands: {
@@ -41,6 +44,7 @@ const manifest = {
     "./islands/ConsultaMedica.tsx": $ConsultaMedica,
     "./islands/Medico.tsx": $Medico,
     "./islands/Paciente.tsx": $Paciente,
+    "./islands/Recetas.tsx": $Recetas,
     "./islands/Sala_de_espera.tsx": $Sala_de_espera,
   },
   baseUrl: import.meta.url,
