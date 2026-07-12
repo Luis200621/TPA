@@ -10,7 +10,6 @@ import * as $api_usuarios from "./routes/api/usuarios.ts";
 import * as $index from "./routes/index.tsx";
 import * as $medico from "./routes/medico.tsx";
 import * as $paciente from "./routes/paciente.tsx";
-import * as $sala_de_espera from "./routes/sala_de_espera.tsx";
 import * as $AgendarHora from "./islands/AgendarHora.tsx";
 import * as $Auth from "./islands/Auth.tsx";
 import * as $Medico from "./islands/Medico.tsx";
@@ -28,7 +27,6 @@ const manifest = {
     "./routes/index.tsx": $index,
     "./routes/medico.tsx": $medico,
     "./routes/paciente.tsx": $paciente,
-    "./routes/sala_de_espera.tsx": $sala_de_espera,
   },
   islands: {
     "./islands/AgendarHora.tsx": $AgendarHora,
