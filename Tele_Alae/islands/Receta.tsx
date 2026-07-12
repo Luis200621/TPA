@@ -75,21 +75,20 @@ export default function Receta() {
             class="w-14 h-14"
           />
         </button>
-
+        
       </header>
 
-      {/* MENÚ DESPLEGABLE */}
-      {open && (
-        <div class="absolute right-4 top-20 bg-[#4D55CC] w-52 rounded-2xl p-6 shadow-2xl z-50">
 
-          <button
-            type="button"
-            onClick={() => {
-              globalThis.location.href = "/medico";
-            }}
-            class="block w-full bg-[#39409D] text-white py-3 rounded-full mb-4"
-          >
-            Inicio
+      {/* MENÚ */}
+      {open && (
+        <div class="absolute right-4 top-20 bg-[#4d55cc] w-52 rounded-2xl p-6 shadow-2xl z-50">
+
+          <button class="block w-full bg-[#39409d] text-white py-3 rounded-full mb-6">
+            Opciones
+          </button>
+
+          <button class="block w-full bg-[#39409d] text-white py-3 rounded-full mb-6">
+            Ayuda
           </button>
 
           <button
@@ -98,7 +97,7 @@ export default function Receta() {
               localStorage.removeItem("usuario");
               globalThis.location.href = "/";
             }}
-            class="block w-full bg-[#39409D] text-white py-3 rounded-full"
+            class="block w-full bg-[#39409d] text-white py-3 rounded-full"
           >
             Cerrar sesión
           </button>
