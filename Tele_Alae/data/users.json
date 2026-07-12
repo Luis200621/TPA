@@ -1,3 +1,42 @@
 [
- 
+  {
+    "nombre": "luis",
+    "run": "22287173-5",
+    "email": "luisetiem.munoz@alumnos.ulagos.cl",
+    "telefono": "5698784414",
+    "emergencia": "5695651651514",
+    "password": "dasadas"
+  },
+  {
+    "nombre": "s",
+    "run": "s",
+    "email": "s@telealae.cl",
+    "telefono": "52422",
+    "emergencia": "24242",
+    "password": "222"
+  },
+  {
+    "nombre": "",
+    "run": "",
+    "email": "s@telealae.com",
+    "telefono": "",
+    "emergencia": "",
+    "password": "s"
+  },
+  {
+    "nombre": "luis",
+    "run": "",
+    "email": "s@telealae.com",
+    "telefono": "",
+    "emergencia": "",
+    "password": "s"
+  },
+  {
+    "nombre": "luis",
+    "run": "dsada",
+    "email": "dsa@telealae.com",
+    "telefono": "sdaasd",
+    "emergencia": "sda",
+    "password": "s"
+  }
 ]

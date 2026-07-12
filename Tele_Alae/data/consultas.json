@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan Pérez González",
+    "sintomas": "Dolor de cabeza",
+    "prioridad": "Media",
+    "tiempo": "10 min",
+    "status": "Esperando"
+  },
+  {
+    "id": 2,
+    "nombre": "María González Soto",
+    "sintomas": "Fiebre alta",
+    "prioridad": "Alta",
+    "tiempo": "5 min",
+    "status": "Urgente"
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos Muñoz Díaz",
+    "sintomas": "Dolor abdominal",
+    "prioridad": "Media",
+    "tiempo": "15 min",
+    "status": "Esperando"
+  },
+  {
+    "id": 4,
+    "nombre": "Camila Rojas Vera",
+    "sintomas": "Dificultad respiratoria",
+    "prioridad": "Alta",
+    "tiempo": "2 min",
+    "status": "Urgente"
+  },
+  {
+    "id": 5,
+    "nombre": "Pedro Hernández Silva",
+    "sintomas": "Dolor de garganta",
+    "prioridad": "Baja",
+    "tiempo": "25 min",
+    "status": "Esperando"
+  },
+  {
+    "id": 6,
+    "nombre": "Valentina Torres Pérez",
+    "sintomas": "Mareos",
+    "prioridad": "Media",
+    "tiempo": "12 min",
+    "status": "Esperando"
+  },
+  {
+    "id": 7,
+    "nombre": "Diego Martínez Castro",
+    "sintomas": "Dolor en el pecho",
+    "prioridad": "Alta",
+    "tiempo": "1 min",
+    "status": "Urgente"
+  }
+]

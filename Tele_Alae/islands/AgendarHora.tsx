@@ -12,10 +12,10 @@ export default function AgendarHora() {
     }
   }, []);
     return (
-    <div class="min-h-screen bg-[#211C84] flex flex-col">
+    <div class="min-h-screen bg-[#ffffff] flex flex-col">
 
       {/* Header */}
-    <header class="bg-[#7a73d1] flex items-center justify-between px-6 py-3">
+    <header class="bg-[#4d55cc] flex items-center justify-between px-6 py-3">
       
         {/* IZQUIERDA */}
         <div class="flex items-center gap-4">
@@ -52,11 +52,11 @@ export default function AgendarHora() {
     </header>
 
     {open && (
-        <div class="absolute right-4 top-20 bg-[#b5a8d5] w-52 rounded-2xl p-6 shadow-2xl">
-          <button class="block w-full bg-[#4D55CC] text-white py-3 rounded-full mb-6">
+        <div class="absolute right-4 top-20 bg-[#4d55cc] w-52 rounded-2xl p-6 shadow-2xl">
+          <button class="block w-full bg-[#39409d] text-white py-3 rounded-full mb-6">
             Opciones
           </button>
-          <button class="block w-full bg-[#4D55CC] text-white py-3 rounded-full mb-6">
+          <button class="block w-full bg-[#39409d] text-white py-3 rounded-full mb-6">
             Ayuda
           </button>
           <button
@@ -65,7 +65,7 @@ export default function AgendarHora() {
               localStorage.removeItem("usuario");
               globalThis.location.href = "/";
             }}
-            class="block w-full bg-[#4D55CC] text-white py-3 rounded-full"
+            class="block w-full bg-[#39409d] text-white py-3 rounded-full"
           >
             Cerrar sesión
           </button>
@@ -79,7 +79,7 @@ export default function AgendarHora() {
           Agendando Hora
         </h2>
 
-        <div class="bg-[#8B84DD] rounded-[40px] p-10">
+        <div class="bg-[#4d55cc] rounded-[40px] p-10">
 
           <h3 class="text-center text-white text-3xl mb-8">
             Síntomas Actuales
@@ -91,7 +91,7 @@ export default function AgendarHora() {
               w-full
               h-52
               rounded-[50px]
-              bg-[#5156CC]
+              bg-[#39409d]
               text-white
               p-8
               resize-none
@@ -102,10 +102,15 @@ export default function AgendarHora() {
 
         </div>
 
+        <div class="text-center bg-[#39409d] rounded-[40px]">
+          <button class="text-white">
+            Enviar sintomas
+          </button>
+        </div>
       </main>
 
       {/* Footer */}
-      <footer class="bg-[#7D76D8] h-16" />
+      <footer class="bg-[#4d55cc] h-16" />
 
     </div>
   );
