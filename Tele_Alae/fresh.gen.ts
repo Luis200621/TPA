@@ -13,6 +13,7 @@ import * as $paciente from "./routes/paciente.tsx";
 import * as $AgendarHora from "./islands/AgendarHora.tsx";
 import * as $Auth from "./islands/Auth.tsx";
 import * as $Medico from "./islands/Medico.tsx";
+import * as $Modal from "./islands/Modal.tsx";
 import * as $Paciente from "./islands/Paciente.tsx";
 import * as $Sala_de_espera from "./islands/Sala_de_espera.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -32,6 +33,7 @@ const manifest = {
     "./islands/AgendarHora.tsx": $AgendarHora,
     "./islands/Auth.tsx": $Auth,
     "./islands/Medico.tsx": $Medico,
+    "./islands/Modal.tsx": $Modal,
     "./islands/Paciente.tsx": $Paciente,
     "./islands/Sala_de_espera.tsx": $Sala_de_espera,
   },

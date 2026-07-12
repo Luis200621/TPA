@@ -1,0 +1,6 @@
+# Bitácora de Estado - TeleAlae
+**Fecha:** 2026-07-12
+**Progreso logrado:** Se reorganizó la estructura de la app para dejar el código fuente más centralizado bajo la carpeta src, se ajustó la lógica de autenticación para normalizar emails y contraseñas, y se añadió un enlace visible para ir a la creación de cuenta desde el login.
+**Problemas abiertos:** La reorganización aún necesita una validación más amplia en ejecución real de Fresh, y conviene revisar si el manifiesto generado sigue resolviendo correctamente las rutas nuevas en el entorno de ejecución.
+**Siguiente paso lógico:** Verificar en ejecución la navegación de login, registro y las pantallas de paciente/doctor para confirmar que la nueva estructura no rompe Fresh.
+**Instrucción para la siguiente IA:** Leer primero los archivos de autenticación y las rutas principales: [src/services/AuthService.ts](src/services/AuthService.ts), [src/repositories/UserRepository.ts](src/repositories/UserRepository.ts), [routes/index.tsx](routes/index.tsx), [routes/_app.tsx](routes/_app.tsx) y [islands/Auth.tsx](islands/Auth.tsx).

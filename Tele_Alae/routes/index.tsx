@@ -1,4 +1,4 @@
-import Auth from "../islands/Auth.tsx";
+import Auth from "../src/islands/Auth.tsx";
 
 export default function Home() {
   return <Auth />;

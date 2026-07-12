@@ -1,142 +1,95 @@
 import { useState } from "preact/hooks";
+import { AuthService } from "../src/services/AuthService.ts";
+import { ModalService } from "../src/services/ModalService.ts";
+
+const authService = new AuthService();
+const modalService = ModalService.getInstance();
 
 export default function Auth() {
-
   const [tab, setTab] = useState("login");
-
-  // ESTADOS DEL FORMULARIO DE REGISTRO 
   const [nombre, setNombre] = useState("");
   const [run, setRun] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
   const [emergencia, setEmergencia] = useState("");
   const [password, setPassword] = useState("");
-
-  // ESTADO POPUP
   const [mensajeEnviado, setMensajeEnviado] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
 
-  // CREAR CUENTA
   const handleRegister = async (e: Event) => {
-
-  
     e.preventDefault();
 
-    const usuario = {
-      nombre,
-      run,
-      email,
-      telefono,
-      emergencia,
-      password,
-    };
-
-    const res = await fetch("/api/register", {
-
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify(usuario),
-
-    });
-
-    const data = await res.json();
-
-    alert(data.mensaje);
-  };
-
-  // LOGIN
-  const handleLogin = async (e: Event) => {
-
-    e.preventDefault();
-
-    // VALIDAR CAMPOS VACÍOS
-    if (email.trim() === "" || password.trim() === "") {
-
-      alert("Debes ingresar correo y contraseña");
+    if (!nombre.trim() || !email.trim() || !password.trim()) {
+      modalService.showError("Completa nombre, correo y contraseña para crear el perfil.", "Registro");
       return;
-
     }
 
     try {
-
-      // OBTENER USUARIOS
-      const res = await fetch("/api/usuarios");
-      const data = await res.json();
-
-      // SOPORTA:
-      // { usuarios: [...] }
-      // o directamente [...]
-      const usuarios = data.usuarios || data;
-
-      // BUSCAR USUARIO QUE COINCIDA CON EMAIL Y CONTRASEÑA
-      const usuario = usuarios.find(
-        (u:any) =>
-          u.email === email &&
-          u.password === password
-      );
-
-      // SI NO SE ENCUENTRA AL USUARIO
-      if (!usuario) {
-
-        alert("Correo o contraseña incorrectos");
-        return;
-
-      }
-
-      // GUARDAR USUARIO EN LocalStorage PARA LA SESIÓN
-      localStorage.setItem(
-        "usuario",
-        JSON.stringify(usuario)
-      );
-
-      // REDIRIGIR SEGUN TIPO DE USUARIO
-      if (email.endsWith("@telealae.com")) {
-
-        globalThis.location.href = "/medico";
-
-      } else {
-
-        globalThis.location.href = "/paciente";
-
-      }
-
+      setIsRegistering(true);
+      const usuario = await authService.register({
+        nombre,
+        run,
+        email,
+        telefono,
+        emergencia,
+        password,
+      });
+      console.log("Usuario registrado", usuario);
+      modalService.showError("Cuenta creada con éxito. Ya puedes iniciar sesión.", "Registro");
+      setTab("login");
+      setNombre("");
+      setRun("");
+      setEmail("");
+      setTelefono("");
+      setEmergencia("");
+      setPassword("");
     } catch (error) {
+      const message = error instanceof Error ? error.message : "No se pudo crear la cuenta.";
+      console.error("Error en registro", error);
+      modalService.showError(message, "Registro");
+    } finally {
+      setIsRegistering(false);
+    }
+  };
 
-      console.error(error);
-      alert("Error al obtener usuarios");
+  const handleLogin = async (e: Event) => {
+    e.preventDefault();
 
+    if (email.trim() === "" || password.trim() === "") {
+      modalService.showError("Debes ingresar correo y contraseña");
+      return;
     }
 
+    try {
+      const usuario = await authService.login(email, password);
+
+      if (!usuario) {
+        modalService.showError("Correo o contraseña incorrectos");
+        return;
+      }
+
+      localStorage.setItem("usuario", JSON.stringify(usuario));
+      globalThis.location.href = usuario.rol === "medico" ? "/medico" : "/paciente";
+    } catch (error) {
+      console.error(error);
+      modalService.showError("Error al iniciar sesión");
+    }
   };
-    /**
-   * SIMULA EL ENVÍO DE LA CONTRASEÑA AL CORREO DEL USUARIO.
-   * MUESTRA UN POPUP DE CONFIRMACIÓN POR 3 SEGUNDOS. 
-   */
-  
+
   const handleEnviarPassword = () => {
-
     if (email.trim() === "") {
-
-      alert("Debes ingresar un correo");
+      modalService.showError("Debes ingresar un correo");
       return;
-
     }
 
     setMensajeEnviado(true);
-
     setTimeout(() => {
-
       setMensajeEnviado(false);
-
     }, 3000);
-
   };
 
   return (
-    <div class="min-h-screen bg-[#ffffff] flex flex-col items-center justify-center">
+    <div class="min-h-screen bg-telealae-surface flex flex-col items-center justify-center">
 
       {/* Logo */}
       <img
@@ -157,7 +110,7 @@ export default function Auth() {
       </div>
 
       {/* Cuadro principal */}
-      <div class="bg-[#4d55cc] border border-white/30 rounded-3xl p-10 w-full max-w-[1000px] shadow-2xl backdrop-blur-lg">
+      <div class="telealae-card w-full max-w-[1000px] p-10 backdrop-blur-lg">
 
         {/* Tabs */}
         <div class="flex -mx-10 -mt-10 mb-6 overflow-hidden rounded-t-3xl bg-[#39409d]">
@@ -236,9 +189,17 @@ export default function Auth() {
             <button
               type="submit"
               onClick={handleLogin}
-              class="mt-4 bg-indigo-800 hover:bg-[#B5A8D5] text-white py-3 rounded-full w-40 mx-auto"
+              class="telealae-button mt-4 w-40 mx-auto"
             >
               Iniciar sesión
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setTab("register")}
+              class="text-white underline text-sm mt-2"
+            >
+              Crear Cuenta
             </button>
 
           </form>
@@ -358,9 +319,10 @@ export default function Auth() {
             <button
               type="submit"
               onClick={handleRegister}
-              class="mt-4 bg-indigo-800 hover:bg-[#B5A8D5] text-white py-3 rounded-full w-40 mx-auto"
+              disabled={isRegistering}
+              class="telealae-button mt-4 w-40 mx-auto disabled:opacity-60"
             >
-              Crear cuenta
+              {isRegistering ? "Creando..." : "Crear cuenta"}
             </button>
 
           </form>

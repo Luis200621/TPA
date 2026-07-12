@@ -4,7 +4,12 @@
 //
 // Esta es la clase "CONTEXTO" del patron State.
 
-import type { Consulta as ConsultaDatos, NivelTriage } from "../types.ts";
+import type {
+  Consulta as ConsultaDatos,
+  ISODateTime,
+  NivelTriage,
+  UUID,
+} from "../types.ts";
 import {
   crearEstadoDesdeNombre,
   EstadoConsultaBase,
@@ -21,7 +26,7 @@ export class ConsultaContexto {
   }
 
   public static crearNueva(
-    id: string,
+    id: UUID,
     paciente: ConsultaDatos["paciente"],
     nivelTriage: NivelTriage,
   ): ConsultaContexto {
@@ -30,7 +35,7 @@ export class ConsultaContexto {
       paciente,
       nivelTriage,
       estado: "EnEspera",
-      horaIngreso: new Date().toISOString(),
+      horaIngreso: new Date().toISOString() as ISODateTime,
     };
     return new ConsultaContexto(datos, new EstadoEnEspera());
   }
@@ -55,15 +60,15 @@ export class ConsultaContexto {
     this.datos.estado = nombreNuevoEstado;
 
     if (nombreNuevoEstado === "EnAtencion" && !this.datos.horaInicioAtencion) {
-      this.datos.horaInicioAtencion = new Date().toISOString();
+      this.datos.horaInicioAtencion = new Date().toISOString() as ISODateTime;
     }
 
     if (nombreNuevoEstado === "Finalizada" && !this.datos.horaFin) {
-      this.datos.horaFin = new Date().toISOString();
+      this.datos.horaFin = new Date().toISOString() as ISODateTime;
     }
   }
 
-  public asignarMedico(medicoId: string): void {
+  public asignarMedico(medicoId: UUID): void {
     this.datos.medicoId = medicoId;
   }
 

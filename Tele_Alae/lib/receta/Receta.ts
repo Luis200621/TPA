@@ -5,17 +5,22 @@
 // Metodos ajustados para calzar con el diagrama UML:
 // generarPDF(), validarTipo(), enviar()
 
-import type { Medicamento, Receta as RecetaDatos } from "../types.ts";
+import type {
+  ISODateTime,
+  Medicamento,
+  Receta as RecetaDatos,
+  UUID,
+} from "../types.ts";
 
 export abstract class RecetaBase {
-  protected consultaId: string;
-  protected medicoId: string;
-  protected pacienteId: string;
+  protected consultaId: UUID;
+  protected medicoId: UUID;
+  protected pacienteId: UUID;
   protected medicamentos: Medicamento[] = [];
   protected indicaciones?: string;
   protected datosFinales?: RecetaDatos;
 
-  constructor(consultaId: string, medicoId: string, pacienteId: string) {
+  constructor(consultaId: UUID, medicoId: UUID, pacienteId: UUID) {
     this.consultaId = consultaId;
     this.medicoId = medicoId;
     this.pacienteId = pacienteId;
@@ -25,7 +30,7 @@ export abstract class RecetaBase {
   // EL "TEMPLATE": orden fijo de pasos, renombrado a
   // generarPDF() para calzar con el diagrama UML.
   // ---------------------------------------------------------
-  public generarPDF(id: string): RecetaDatos {
+  public generarPDF(id: UUID): RecetaDatos {
     if (!this.validarTipo()) {
       throw new Error(
         `No se pudo generar la receta: la validacion especifica del ` +
@@ -48,7 +53,7 @@ export abstract class RecetaBase {
       pacienteId: this.pacienteId,
       medicamentos: this.medicamentos,
       indicaciones: this.indicaciones,
-      fechaEmision: new Date().toISOString(),
+      fechaEmision: new Date().toISOString() as ISODateTime,
     };
 
     // Simulacion de la generacion del documento PDF. En una

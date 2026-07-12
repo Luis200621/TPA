@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .telealae-card {
+    @apply rounded-[28px] border border-white/20 bg-telealae-accent text-white shadow-telealae;
+  }
+
+  .telealae-button {
+    @apply rounded-full bg-telealae-interactive px-5 py-3 text-sm font-semibold text-white shadow-telealaeSoft transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110;
+  }
+
+  .telealae-button-secondary {
+    @apply rounded-full bg-telealae-decorative px-5 py-3 text-sm font-semibold text-telealae-primary shadow-telealaeSoft transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105;
+  }
+
+  .telealae-input {
+    @apply w-full rounded-full border border-white/20 bg-[#B5A8D5]/75 px-4 py-3 text-white placeholder-white/70 outline-none transition focus:border-white/40 focus:bg-[#B5A8D5];
+  }
+
+  .telealae-panel {
+    @apply rounded-[24px] bg-telealae-accent p-6 text-white shadow-telealaeSoft;
+  }
+}

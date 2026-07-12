@@ -1,24 +1,38 @@
 // lib/types.ts
 //
-// Tipos compartidos por TODOS los patrones del sistema.
-// Esta es la "fuente de verdad" sobre la forma de los datos:
-// Singleton, State, Strategy, Observer y Template Method
-// importan estos tipos en lugar de definir los suyos propios.
+// Modelos canónicos de TeleAlae.
+// Esta es la única fuente de verdad para los objetos del dominio:
+// cualquier módulo debe consumir estos tipos en vez de declarar
+// estructuras paralelas.
+
+export type UUID = string & { readonly __brand: "UUID" };
+export type ISODateTime = string & { readonly __brand: "ISODateTime" };
 
 // ---------------------------------------------------------
-// PERSONAS
+// USUARIO Y ROLES
 // ---------------------------------------------------------
 
-export interface Paciente {
-  id: string;
+export interface User {
+  id: UUID;
   nombre: string;
-  edad?: number;
-  sintomas: string;
+  run?: string;
+  email: string;
+  telefono?: string;
+  emergencia?: string;
+  password: string;
+  rol: "paciente" | "medico";
+  createdAt: ISODateTime;
+  updatedAt: ISODateTime;
 }
 
-export interface Medico {
-  id: string;
-  nombre: string;
+export interface Paciente extends User {
+  rol: "paciente";
+  edad?: number;
+  sintomas?: string;
+}
+
+export interface Medico extends User {
+  rol: "medico";
   especialidad?: string;
 }
 
@@ -28,46 +42,62 @@ export interface Medico {
 
 // C1 = más grave / atención inmediata
 // C5 = menos grave / puede esperar
-export type NivelTriage = "C1" | "C2" | "C3" | "C4" | "C5";
+export type TriageLevel = "C1" | "C2" | "C3" | "C4" | "C5";
+export type NivelTriage = TriageLevel;
 
 // ---------------------------------------------------------
 // ESTADO DE LA CONSULTA (usado por el patrón State)
 // ---------------------------------------------------------
 
-export type EstadoConsulta = "EnEspera" | "EnAtencion" | "Finalizada";
+export type ConsultationStatus = "EnEspera" | "EnAtencion" | "Finalizada";
+export type EstadoConsulta = ConsultationStatus;
 
 // ---------------------------------------------------------
 // CONSULTA (objeto central del sistema)
 // ---------------------------------------------------------
 
-export interface Consulta {
-  id: string;
+export interface Consultation {
+  id: UUID;
   paciente: Paciente;
-  medicoId?: string; // se asigna cuando pasa a EnAtencion
-  nivelTriage: NivelTriage;
-  estado: EstadoConsulta;
-  horaIngreso: string; // ISO string, ej: new Date().toISOString()
-  horaInicioAtencion?: string;
-  horaFin?: string;
-  recetaId?: string; // referencia a la receta generada, si existe
+  medicoId?: UUID;
+  nivelTriage: TriageLevel;
+  estado: ConsultationStatus;
+  horaIngreso: ISODateTime;
+  horaInicioAtencion?: ISODateTime;
+  horaFin?: ISODateTime;
+  recetaId?: UUID;
 }
+
+export type Consulta = Consultation;
 
 // ---------------------------------------------------------
 // RECETA (usado por el patrón Template Method)
 // ---------------------------------------------------------
 
-export interface Medicamento {
+export interface Medication {
   nombre: string;
   dosis: string;
   frecuencia: string;
 }
 
-export interface Receta {
-  id: string;
-  consultaId: string;
-  medicoId: string;
-  pacienteId: string;
-  medicamentos: Medicamento[];
+export interface Prescription {
+  id: UUID;
+  consultaId: UUID;
+  medicoId: UUID;
+  pacienteId: UUID;
+  medicamentos: Medication[];
   indicaciones?: string;
-  fechaEmision: string; // ISO string
+  fechaEmision: ISODateTime;
+}
+
+export type Receta = Prescription;
+
+// ---------------------------------------------------------
+// LISTA DE ESPERA
+// ---------------------------------------------------------
+
+export interface WaitingList {
+  id: UUID;
+  consultas: Consultation[];
+  actualizadoEn: ISODateTime;
 }

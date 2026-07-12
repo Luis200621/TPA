@@ -6,7 +6,7 @@
 // Deno KV funcionan correctamente. Se puede borrar despues.
  
 import { HistorialMedico } from "./lib/historial/HistorialMedico.ts";
-import type { Consulta } from "./lib/types.ts";
+import type { Consulta, ISODateTime, UUID } from "./lib/types.ts";
  
 console.log("--- Probando el Singleton HistorialMedico ---");
  
@@ -24,16 +24,23 @@ console.log(
 );
  
 // 3. Creamos una consulta de prueba, usando el mismo "idioma" de types.ts
+const consultaId = crypto.randomUUID() as UUID;
+const pacienteId = crypto.randomUUID() as UUID;
 const consultaPrueba: Consulta = {
-  id: "consulta-001",
+  id: consultaId,
   paciente: {
-    id: "paciente-001",
+    id: pacienteId,
     nombre: "Juan Perez",
+    email: "juan.perez@example.com",
+    password: "secreto",
+    rol: "paciente",
+    createdAt: new Date().toISOString() as ISODateTime,
+    updatedAt: new Date().toISOString() as ISODateTime,
     sintomas: "Dolor de cabeza y fiebre",
   },
   nivelTriage: "C3",
   estado: "EnEspera",
-  horaIngreso: new Date().toISOString(),
+  horaIngreso: new Date().toISOString() as ISODateTime,
 };
  
 // 4. Guardamos la consulta en Deno KV
@@ -42,7 +49,7 @@ console.log("Consulta guardada con id:", consultaPrueba.id);
  
 // 5. La volvemos a leer desde KV (usando la otra instancia, para
 //    confirmar que ambas comparten la misma conexion y datos)
-const consultaLeida = await historial2.obtenerConsulta("consulta-001");
+const consultaLeida = await historial2.obtenerConsulta(consultaId);
 console.log("Consulta leida de vuelta:", consultaLeida);
  
 // 6. Probamos obtener TODAS las consultas

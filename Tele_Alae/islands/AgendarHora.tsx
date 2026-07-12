@@ -1,8 +1,20 @@
-import { useState, useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import { ConsultationService } from "../src/services/ConsultationService.ts";
+import { ModalService } from "../src/services/ModalService.ts";
+import { TriageService } from "../src/services/TriageService.ts";
+import { WaitingListObserver } from "../src/services/WaitingListObserver.ts";
+
+const consultationService = new ConsultationService();
+const triageService = new TriageService();
+const modalService = ModalService.getInstance();
+const waitingListObserver = new WaitingListObserver();
 
 export default function AgendarHora() {
   const [open, setOpen] = useState(false);
   const [usuario, setUsuario] = useState<{ nombre: string } | null>(null);
+  const [sintomas, setSintomas] = useState("");
+  const [edad, setEdad] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const user = localStorage.getItem("usuario");
@@ -11,7 +23,64 @@ export default function AgendarHora() {
       setUsuario(parsedUser);
     }
   }, []);
-    return (
+
+  const handleSubmit = async (e: Event) => {
+    e.preventDefault();
+
+    if (!sintomas.trim()) {
+      modalService.showError("Describe tus síntomas para continuar.");
+      return;
+    }
+
+    if (edad.trim()) {
+      const edadNumero = Number(edad);
+      if (!Number.isFinite(edadNumero) || edadNumero < 0 || edadNumero > 100 || !Number.isInteger(edadNumero)) {
+        modalService.show("Edad inválida");
+        return;
+      }
+    }
+
+    try {
+      setIsSubmitting(true);
+      const nivelTriage = triageService.clasificar({
+        sintomas,
+        edad: edad ? Number(edad) : undefined,
+      });
+
+      const usuarioActual = JSON.parse(localStorage.getItem("usuario") || "null");
+      const consultation = await consultationService.createConsultation(
+        {
+          ...usuarioActual,
+          rol: "paciente",
+          password: usuarioActual?.password ?? "",
+          createdAt: usuarioActual?.createdAt ?? new Date().toISOString(),
+          updatedAt: usuarioActual?.updatedAt ?? new Date().toISOString(),
+          email: usuarioActual?.email ?? "",
+          id: usuarioActual?.id ?? (crypto.randomUUID() as string),
+          nombre: usuarioActual?.nombre ?? "Paciente",
+          sintomas,
+        },
+        nivelTriage,
+      );
+
+      if (nivelTriage === "C1" || nivelTriage === "C2") {
+        waitingListObserver.notificar(consultation);
+      }
+
+      modalService.showError(
+        `Consulta creada con prioridad ${nivelTriage}.`,
+        "Agendamiento",
+      );
+    } catch (error) {
+      modalService.showError(
+        error instanceof Error ? error.message : "No se pudo agendar la hora.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
     <div class="min-h-screen bg-[#211C84] flex flex-col">
 
       {/* Header */}
@@ -79,28 +148,34 @@ export default function AgendarHora() {
           Agendando Hora
         </h2>
 
-        <div class="bg-[#8B84DD] rounded-[40px] p-10">
-
+        <form class="telealae-card rounded-[40px] bg-[#8B84DD] p-10" onSubmit={handleSubmit}>
           <h3 class="text-center text-white text-3xl mb-8">
             Síntomas Actuales
           </h3>
 
           <textarea
+            value={sintomas}
+            onInput={(e) => setSintomas(e.currentTarget.value)}
             placeholder="Describa sus síntomas..."
-            class="
-              w-full
-              h-52
-              rounded-[50px]
-              bg-[#5156CC]
-              text-white
-              p-8
-              resize-none
-              outline-none
-              text-xl
-            "
+            class="telealae-input h-32 resize-none rounded-[30px] bg-[#5156CC] p-8 text-xl"
           />
 
-        </div>
+          <input
+            type="number"
+            value={edad}
+            onInput={(e) => setEdad(e.currentTarget.value)}
+            placeholder="Edad (opcional)"
+            class="telealae-input mt-4 rounded-[30px] bg-[#5156CC] p-4"
+          />
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            class="telealae-button mt-6 px-6 disabled:opacity-60"
+          >
+            {isSubmitting ? "Agendando..." : "Agendar hora"}
+          </button>
+        </form>
 
       </main>
 
